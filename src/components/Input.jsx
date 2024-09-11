@@ -8,7 +8,7 @@ const Input = ({ label, type, value, onChange, name, id, placeholder,className="
           {label}
         </label>
         <input
-          type={type}
+          type="text"
           value={value}
           name={name}
           onChange={onChange}

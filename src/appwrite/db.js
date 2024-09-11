@@ -7,22 +7,22 @@ export class DbService{
     
     constructor(){
         this.client
+        .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(config.appwriteProjectId);
 
         this.databases = new Databases(this.client);
     }
 
-    async createPost({title,link,slug,content,status,userId}){
+    async createPost(title,link,content,status,userId){
         try{
             return await this.databases.createDocument(
                 config.appwriteDBId,
                 config.appwriteCollectionId,
-                slug,
+                ID.unique(),
                 {
                     title,
                     link,
                     content,
-                    status,
                     userId,
                 }
             )
@@ -77,12 +77,12 @@ export class DbService{
         }
     }
 
-    async getPosts(queries = [Query.equal("status","active")]){
+    async getPosts(){
         try {
             await this.databases.getPosts(
                 config.appwriteDBId,
                 config.appwriteCollectionId,
-                queries
+                
             )
         } catch (error) {
             console.log("get posts error ",error);

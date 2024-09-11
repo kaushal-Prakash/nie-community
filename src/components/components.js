@@ -6,6 +6,7 @@ import Home from './Home'
 import PostForm from './PostForm'
 import Secure from "./Secure";
 import Button from './Button';
+import Card from "./Card";
 
 
 export {
@@ -17,4 +18,6 @@ export {
     PostForm,
     Secure,
     Button,
+    Card,
+    
 }
