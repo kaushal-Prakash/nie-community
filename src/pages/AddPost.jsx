@@ -9,34 +9,35 @@ function AddPost() {
     const [url, setUrl] = useState("");
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [postStatus, setPostStatus] = useState("true");
+    const [postStatus, setPostStatus] = useState(true);
 
     const userData = useSelector((state) => state.auth.userData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            setPostStatus(false);
+            const updatedPostStatus = false; // Use a local variable
+            setPostStatus(updatedPostStatus); // Schedule the state update
             const title = e.target.title.value;
             const content = e.target.content.value;
-            const userId = userData.id;
-
-            const post = await dbService.createPost(title, url, content, userId);
-            if(post){
-              console.log("Post created successfully:", post);
-              navigate("/");
+            const userId = userData.$id;
+            const post = await dbService.createPost(title, url, content, updatedPostStatus, userId);
+            if (post) {
+                console.log("Post created successfully:", post);
+                navigate("/");
             }
         } catch (error) {
             console.log("Add Post Error ", error);
         }
     };
+    
 
 
     return (
         <div className='h-screen w-screen py-44'>
             <Secure>
                 <Input
-                    placeholder="URL"
+                    placeholder="Add a vaid source url..."
                     label="File URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}

@@ -18,7 +18,7 @@ function PostForm({placeholder,className="",onSubmit,inputValue,onInputChange,te
             </div>
             <label htmlFor="content" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details</label>
             <textarea id="content" 
-            value={textBox}
+            value={textBox || ""}
             onChange={onChangeTextBox}
             name='content'
             rows="10" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 

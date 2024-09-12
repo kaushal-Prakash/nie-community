@@ -15,6 +15,10 @@ function Header() {
         navigate('/login');
     };
 
+    const handleClick = () =>{
+        navigate("/");
+    }
+
     const handleLogout = async () => {
         try {
             await authService.logout();
@@ -31,11 +35,13 @@ function Header() {
 
     return (
         <nav className="bg-white dark:bg-neutral-900/50 backdrop-blur-md fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <div className="max-w-screen-xl cursor-pointer flex flex-wrap items-center justify-between mx-auto p-4">
+                <div className="flex items-center space-x-3 rtl:space-x-reverse"
+                onClick={handleClick}
+                >
                     <img src={Logo} className="h-8" alt="Flowbite Logo"/>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Community</span>
-                </a>
+                </div>
                 <div className="flex items-center justify-center md:order-2">
                     {
                         !isLogin && location.pathname !== "/login" && 

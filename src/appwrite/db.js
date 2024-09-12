@@ -24,6 +24,7 @@ export class DbService{
                     link,
                     content,
                     userId,
+                    status,
                 }
             )
         }
@@ -32,7 +33,7 @@ export class DbService{
         }
     }
 
-    async updatePost(slug,{title,link,content,status,userId}){
+    async updatePost(slug,{title,link,content,status}){
         try {
             return await this.databases.updateDocument(
                 config.appwriteDBId,
@@ -64,12 +65,12 @@ export class DbService{
         }
     }
 
-    async getPost(slug){
+    async getPost(docId){
         try {
             return this.databases.getDocument(
                 config.appwriteDBId,
                 config.appwriteCollectionId,
-                slug,
+                docId,
             )
         } catch (error) {
             console.log("get post error",err);
@@ -77,13 +78,38 @@ export class DbService{
         }
     }
 
-    async getPosts(){
+    async getUserPosts(userId){
         try {
-            await this.databases.getPosts(
+            const postsData = await this.databases.listDocuments(
                 config.appwriteDBId,
                 config.appwriteCollectionId,
-                
+                [Query.equal('userId',[userId])],
             )
+            if(postsData){
+                return postsData;
+            }
+            else{
+                return null;
+            }
+        } catch (error) {
+            console.log("get posts error ",error);
+            return false;
+        }
+    }
+
+    async getPosts(){
+        try {
+            const postsData = await this.databases.listDocuments(
+                config.appwriteDBId,
+                config.appwriteCollectionId,
+                [Query.equal('status',[false])],
+            )
+            if(postsData){
+                return postsData;
+            }
+            else{
+                return null;
+            }
         } catch (error) {
             console.log("get posts error ",error);
             return false;

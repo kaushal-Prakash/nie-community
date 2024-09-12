@@ -9,7 +9,7 @@ const Secure = ({ children }) => {
 
   useEffect(() => {
     if (!user && location.pathname !== "/login" && location.pathname !== "/signup") {
-      navigate('/login');
+      navigate('/');
     }
   }, [user, navigate, location.pathname]);
 
