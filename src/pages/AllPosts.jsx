@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Secure from '../components/Secure';
 import dbService from "../appwrite/db";
 import Card from '../components/Card';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -45,22 +44,7 @@ function AllPosts() {
     <div>
       <Secure>
         <div className='w-screen h-screen pt-36'>
-          <InfiniteScroll
-            dataLength={posts.length}
-            next={fetchData}
-            hasMore={hasMore}
-            loader={
-              <h1 className='h-full w-full grid place-content-center text-slate-200'>
-                Loading...
-              </h1>
-            }
-            endMessage={
-              <p className='text-center text-slate-200 text-2xl mt-12'>
-                {!loading && <b className=' mt-12'>Yay! You have seen it all</b>}
-              </p>
-            }
-          >
-            <div className='p-5 flex gap-4 items-start flex-wrap'>
+        <div className='p-5 flex gap-4 items-start flex-wrap'>
               {posts && posts.length > 0 ? (
                 posts.map((post) => (
                   <Card
@@ -78,7 +62,6 @@ function AllPosts() {
                 </h1>
               )}
             </div>
-          </InfiniteScroll>
         </div>
       </Secure>
     </div>

@@ -7,7 +7,7 @@ import PostForm from './PostForm'
 import Secure from "./Secure";
 import Button from './Button';
 import Card from "./Card";
-
+import ToTopBtn from "./ToTopBtn";
 
 export {
     Header,
@@ -19,5 +19,5 @@ export {
     Secure,
     Button,
     Card,
-    
+    ToTopBtn,
 }
