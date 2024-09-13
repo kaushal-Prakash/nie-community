@@ -8,8 +8,12 @@ const Secure = ({ children }) => {
   const user = useSelector((state) => state.auth.status);
 
   useEffect(() => {
-    if (!user && location.pathname !== "/login" && location.pathname !== "/signup") {
-      navigate('/');
+    if(user){
+      navigate(location.pathname);
+    }else{
+      if (location.pathname !== "/login" && location.pathname !== "/signup") {
+        navigate('/');
+      }
     }
   }, [user, navigate, location.pathname]);
 

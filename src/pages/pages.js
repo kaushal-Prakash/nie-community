@@ -4,6 +4,7 @@ import SignupPage from "./SignupPage";
 import AllPosts from "./AllPosts";
 import MyPosts from "./MyPosts";
 import AddPost from "./AddPost";
+import EditPost from "./EditPost";
 
 
 export {
@@ -13,4 +14,5 @@ export {
     AllPosts,
     MyPosts,
     AddPost,
+    EditPost,
 }

@@ -35,6 +35,8 @@ function MyPosts() {
                   content={post.content}
                   title={post.title}
                   url={post.link}
+                  user={post.userId}
+                  id={post.$id}
                 />
               ))
             ) : (

@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
-import { Button, Input, PostForm, Secure } from '../components/components';
-import dbService from '../appwrite/db';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { PostForm, Secure, Input } from '../components/components';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import dbService from '../appwrite/db';
 
-function AddPost() {
+function EditPost() {
     const navigate = useNavigate();
-    const [url, setUrl] = useState("");
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const post = useSelector((state) => state.post.post);
+    const [url, setUrl] = useState(post.link);
+    const [title, setTitle] = useState(post.title);
+    const [content, setContent] = useState(post.content);
     const [postStatus, setPostStatus] = useState(true);
-
-    const userData = useSelector((state) => state.auth.userData);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const updatedPostStatus = false; // Use a local variable
             setPostStatus(updatedPostStatus); // Schedule the state update
-            const title = e.target.title.value;
-            const content = e.target.content.value;
-            const userId = userData.$id;
-            const post = await dbService.createPost(title, url, content, updatedPostStatus, userId);
-            if (post) {
-                console.log("Post created successfully:", post);
+            const newTitle = e.target.title.value;
+            const newContent = e.target.content.value;
+            const updatedPost = await dbService.updatePost(post.$id, newTitle, url, newContent, updatedPostStatus);
+            if (updatedPost) {
                 navigate("/");
             }
         } catch (error) {
-            console.log("Add Post Error ", error);
+            console.log("Update Post Error ", error);
         }
     };
-    
-
 
     return (
         <div className='h-screen w-screen py-44'>
             <Secure>
                 <Input
-                    placeholder="Add a vaid source url..."
                     label="File URL"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
@@ -51,11 +46,11 @@ function AddPost() {
                     onChangeTextBox={(e) => setContent(e.target.value)}
                     onSubmit={handleSubmit}
                     placeholder="Title of post"
-                    btnText="Add"
+                    btnText="Update"
                 />
             </Secure>
         </div>
     );
 }
 
-export default AddPost;
+export default EditPost;

@@ -1,7 +1,9 @@
 import React from 'react'
 import Button from './Button'
 
-function PostForm({placeholder,className="",onSubmit,inputValue,onInputChange,textBox,onChangeTextBox}) {
+function PostForm({placeholder,className="",onSubmit,inputValue,onInputChange,textBox,onChangeTextBox,
+  btnText
+}) {
   return (
     <div>
         <form className="max-w-sm mx-auto" onSubmit={onSubmit}>
@@ -25,7 +27,7 @@ function PostForm({placeholder,className="",onSubmit,inputValue,onInputChange,te
             focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
             dark:focus:border-blue-500" placeholder="Write about the post..."></textarea>
 
-            <Button type="submit" text="Add" className='mt-6'/>
+            <Button type="submit" text={btnText} className='mt-6'/>
         </form>
     </div>
   )

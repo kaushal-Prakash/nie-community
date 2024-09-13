@@ -33,12 +33,12 @@ export class DbService{
         }
     }
 
-    async updatePost(slug,{title,link,content,status}){
+    async updatePost(postId,title,link,content,status){
         try {
             return await this.databases.updateDocument(
                 config.appwriteDBId,
                 config.appwriteCollectionId,
-                slug,
+                postId,
                 {
                     title,
                     link,
