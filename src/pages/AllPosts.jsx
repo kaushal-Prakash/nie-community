@@ -13,8 +13,9 @@ function AllPosts() {
     const fetchPosts = async () => {
       try {
         const response = await dbService.getPosts();
-        setPosts(response.documents);
-        if (response.documents.length > 40) {
+        const documents = response.documents || []; // Provide a fallback value
+        setPosts(documents);
+        if (documents.length > 40) {
           setHasMore(true);
         }
         setLoading(false);
@@ -30,8 +31,9 @@ function AllPosts() {
   const fetchData = async () => {
     try {
       const response = await dbService.getPosts();
-      setPosts((prevPosts) => [...prevPosts, ...response.documents]);
-      if (response.documents.length === 0) {
+      const documents = response.documents || []; // Provide a fallback value
+      setPosts((prevPosts) => [...prevPosts, ...documents]);
+      if (documents.length === 0) {
         setHasMore(false);
       }
     } catch (error) {
