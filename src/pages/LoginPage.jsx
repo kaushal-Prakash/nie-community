@@ -34,8 +34,8 @@ function LoginPage() {
   };
 
   return (
-    <div className='h-screen p-60'>
-      <form onSubmit={handleLogin} className="max-w-sm mx-auto p-12 rounded-xl border-2 border-amber-50">
+    <div className='h-screen flex items-center justify-center p-10 sm:p-4'>
+      <form onSubmit={handleLogin} className="max-w-sm sm:max-w-full mx-auto p-12 sm:p-6 rounded-xl border-2 border-amber-50">
         <Input
           label="Your email"
           type="email"

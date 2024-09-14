@@ -33,13 +33,16 @@ function ToTopBtn() {
     <>
       {show && (
         <div
-          className='fixed bottom-24 right-24 rounded-full cursor-pointer bg-slate-600 p-4 hover:opacity-75 active:ring-2 active:ring-blue-500'
+          className='fixed bottom-8 right-8 sm:bottom-24 
+          sm:right-24 rounded-full cursor-pointer bg-slate-600 p-3 
+           z-30 sm:p-4 hover:opacity-75 active:ring-2 active:ring-blue-500'
           onClick={handleClick}
         >
           <FaArrowUp 
             color='white'
             title='Top screen'
-            size="1.25rem"
+            size="1rem"
+            sm:size="1.25rem"
           />
         </div>
       )}

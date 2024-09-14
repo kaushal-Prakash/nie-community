@@ -30,29 +30,29 @@ function AddPost() {
             console.log("Add Post Error ", error);
         }
     };
-    
-
 
     return (
-        <div className='h-screen w-screen py-44'>
+        <div className='h-screen w-screen py-20 sm:py-10 flex justify-center items-center'>
             <Secure>
-                <Input
-                    placeholder="Add a vaid source url..."
-                    label="File URL"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    id="file-url"
-                    className='max-w-sm'
-                />
-                <PostForm
-                    inputValue={title}
-                    onInputChange={(e) => setTitle(e.target.value)}
-                    textBox={content}
-                    onChangeTextBox={(e) => setContent(e.target.value)}
-                    onSubmit={handleSubmit}
-                    placeholder="Title of post"
-                    btnText="Add"
-                />
+                <div className='w-full max-w-4xl p-8 bg-transparent shadow-md rounded-lg'>
+                    <Input
+                        placeholder="Add a valid source URL..."
+                        label="File URL"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        id="file-url"
+                        className='w-full mb-4'
+                    />
+                    <PostForm
+                        inputValue={title}
+                        onInputChange={(e) => setTitle(e.target.value)}
+                        textBox={content}
+                        onChangeTextBox={(e) => setContent(e.target.value)}
+                        onSubmit={handleSubmit}
+                        placeholder="Title of post"
+                        btnText="Add"
+                    />
+                </div>
             </Secure>
         </div>
     );

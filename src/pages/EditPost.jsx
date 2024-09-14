@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PostForm, Secure, Input } from '../components/components';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import dbService from '../appwrite/db';
@@ -30,24 +29,27 @@ function EditPost() {
     };
 
     return (
-        <div className='h-screen w-screen py-44'>
+        <div className='h-screen w-screen py-20 sm:py-10 flex justify-center items-center'>
             <Secure>
-                <Input
-                    label="File URL"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    id="file-url"
-                    className='max-w-sm'
-                />
-                <PostForm
-                    inputValue={title}
-                    onInputChange={(e) => setTitle(e.target.value)}
-                    textBox={content}
-                    onChangeTextBox={(e) => setContent(e.target.value)}
-                    onSubmit={handleSubmit}
-                    placeholder="Title of post"
-                    btnText="Update"
-                />
+                <div className='w-full max-w-4xl p-8 bg-transparent shadow-md rounded-lg'>
+                    <Input
+                        placeholder="Add a valid source URL..."
+                        label="File URL"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                        id="file-url"
+                        className='w-full mb-4'
+                    />
+                    <PostForm
+                        inputValue={title}
+                        onInputChange={(e) => setTitle(e.target.value)}
+                        textBox={content}
+                        onChangeTextBox={(e) => setContent(e.target.value)}
+                        onSubmit={handleSubmit}
+                        placeholder="Title of post"
+                        btnText="Update"
+                    />
+                </div>
             </Secure>
         </div>
     );

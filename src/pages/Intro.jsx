@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, useLocation, useNavigate } from 'react-router-dom';
 import homeImg from '../assets/home.png';
-import authService from '../appwrite/auth'
+import homeImgSmall from '../assets/home-phone.png'; 
+import authService from '../appwrite/auth';
 import { login } from '../store/authSlice';
 
 function Intro() {
@@ -10,6 +11,7 @@ function Intro() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,7 +24,7 @@ function Intro() {
         console.log(error);
       }
     };
-  
+
     fetchData();
   }, [dispatch, navigate]);
 
@@ -30,11 +32,15 @@ function Intro() {
     <>
       {
         !isLogin && location.pathname === "/" && (
-          <img 
-            src={homeImg} 
-            className='h-screen w-screen object-cover' 
-            alt="Home"
-          />
+          <picture>
+            <source srcSet={homeImgSmall} media="(max-width: 640px)" />
+            <source srcSet={homeImg} media="(min-width: 641px)" />
+            <img 
+              src={homeImg} 
+              className='h-screen w-screen object-cover' 
+              alt="Home"
+            />
+          </picture>
         )
       }
     </>

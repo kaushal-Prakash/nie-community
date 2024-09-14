@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/authSlice';
 import authService from '../appwrite/auth';
-import {Input,Button} from '../components/components';
+import { Input, Button } from '../components/components';
 import { useNavigate } from 'react-router-dom';
 
 function SignupPage() {
@@ -14,20 +14,20 @@ function SignupPage() {
     const handleSignup = async (event) => {
         event.preventDefault();
         try {
-            const user = await authService.createAccount(email,pass);
-            if(user){
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
+            const user = await authService.createAccount(email, pass);
+            if (user) {
+                const userData = await authService.getCurrentUser();
+                if (userData) dispatch(login(userData));
                 navigate("/");
             }
-
         } catch (error) {
-            console.log("Signup Error : ",error);
+            console.log("Signup Error: ", error);
         }
-    }
+    };
+
     return (
-        <div className='h-screen p-60'>
-            <form onSubmit={handleSignup} className="max-w-sm mx-auto p-12 rounded-xl border-2 border-amber-50">
+        <div className='h-screen flex items-center justify-center p-10 sm:p-4'>
+            <form onSubmit={handleSignup} className="max-w-sm sm:max-w-full mx-auto p-12 sm:p-6 rounded-xl border-2 border-amber-50">
                 <Input
                     label="Your email"
                     type="email"
@@ -48,8 +48,8 @@ function SignupPage() {
                 />
                 <Button type="submit" text="Submit" />
             </form>
-    </div>
+        </div>
     );
 }
 
-export default SignupPage
+export default SignupPage;

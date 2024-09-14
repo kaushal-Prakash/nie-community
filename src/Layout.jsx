@@ -1,5 +1,5 @@
 import React from 'react'
-import {Header, Footer,Secure, ToTopBtn} from './components/components'
+import {Header, Footer,Secure} from './components/components'
 import { Outlet } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import {store} from './store/store'
@@ -12,7 +12,6 @@ function Layout() {
       <Intro/>
       <Outlet />
       <Footer />
-      <ToTopBtn/>
     </Provider>
   )
 }
