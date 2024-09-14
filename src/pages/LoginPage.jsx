@@ -35,7 +35,7 @@ function LoginPage() {
 
   return (
     <div className='h-screen flex items-center justify-center p-20 sm:p-10'>
-      <form onSubmit={handleLogin} className="w-full max-w-lg p-12 bg-transparent border-2 border-amber-50 rounded-lg shadow-md glowing-border">
+      <form onSubmit={handleLogin} className="w-full max-w-lg p-12 bg-transparent border-2 border-amber-50 rounded-lg shadow-md glowing-border sm:w-full">
         <Input
           label="Your email"
           type="email"
