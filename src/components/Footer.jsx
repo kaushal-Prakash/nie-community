@@ -15,7 +15,7 @@ function Footer() {
               <a href="https://www.linkedin.com/in/devkaushalprakash/" className="hover:underline me-2 md:me-4">LinkedIn</a>
             </li>
             <li>
-              <a href="mailto:kingkaushal1289@gmail.com" className="hover:underline">Contact me</a>
+              <a href="mailto:savagegamer1289@gmail.com" className="hover:underline">Contact me</a>
             </li>
           </ul>
         </div>
