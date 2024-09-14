@@ -4,7 +4,7 @@ import Button from './Button';
 function PostForm({ placeholder, className = "", onSubmit, inputValue, onInputChange, textBox, onChangeTextBox, btnText }) {
   return (
     <div>
-      <form className="max-w-sm sm:max-w-full mx-auto p-4 sm:p-2" onSubmit={onSubmit}>
+      <form className="max-w-sm sm:max-w-screen mx-auto p-4 sm:p-2" onSubmit={onSubmit}>
         <div className="mb-5">
           <label htmlFor="title" className="block mb-2 text-sm sm:text-xs font-medium text-gray-900 dark:text-white">Title</label>
           <input
