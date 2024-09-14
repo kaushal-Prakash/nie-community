@@ -4,8 +4,7 @@ import {Logo} from './components';
 
 function Footer() {
   return (
-    <>
-      <footer className=" rounded-lg shadow m-4 mt-5">
+      <footer className=" max-w-full rounded-lg shadow mt-5 backdrop-blur-md bg-transparent">
           <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
               <div className="sm:flex sm:items-center sm:justify-between">
                   <div className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
@@ -26,7 +25,6 @@ function Footer() {
               <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 Community™. All Rights Reserved.</span>
           </div>
       </footer>
-    </>
   );
 }
 

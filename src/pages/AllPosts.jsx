@@ -43,25 +43,25 @@ function AllPosts() {
   return (
     <div>
       <Secure>
-        <div className='w-screen h-screen pt-36'>
-        <div className='p-5 flex gap-4 items-start flex-wrap'>
-              {posts && posts.length > 0 ? (
-                posts.map((post) => (
-                  <Card
-                    key={post.$id}
-                    content={post.content}
-                    title={post.title}
-                    url={post.link}
-                    user={post.userId}
-                    id={post.$id}
-                  />
-                ))
-              ) : (
-                <h1 className='h-full w-full grid place-content-center text-slate-200'>
-                  Loading...
-                </h1>
-              )}
-            </div>
+        <div className='w-full h-screen pt-36 overflow-y-scroll no-scrollbar'>
+          <div className='p-5 flex gap-4 items-start flex-wrap'>
+            {posts && posts.length > 0 ? (
+              posts.map((post) => (
+                <Card
+                  key={post.$id}
+                  content={post.content}
+                  title={post.title}
+                  url={post.link}
+                  user={post.userId}
+                  id={post.$id}
+                />
+              ))
+            ) : (
+              <h1 className='h-full w-full grid place-content-center text-slate-200'>
+                Loading...
+              </h1>
+            )}
+          </div>
         </div>
       </Secure>
     </div>

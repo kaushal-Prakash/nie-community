@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Input = ({ label, type, value, onChange, name, id, placeholder,className="" }) => {
+const Input = ({ label, type, value, onChange, name, id, placeholder, className = "" }) => {
   return (
     <div className="mb-5 flex justify-center">
-      <div className="flex flex-col items-center w-full max-w-md">
-        <label htmlFor={id} className="self-start ml-8 mb-2 text-sm font-medium text-gray-900 dark:text-white">
+      <div className="flex flex-col w-full max-w-md">
+        <label htmlFor={id} className="mb-2 text-sm font-medium text-gray-900 dark:text-white">
           {label}
         </label>
         <input
@@ -23,7 +23,6 @@ const Input = ({ label, type, value, onChange, name, id, placeholder,className="
       </div>
     </div>
   );
-  
 };
 
 export default Input;
