@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Logo from "./logo";
+import Logo from "./Logo";
 import Input from "./Input";
 import PostForm from './PostForm'
 import Secure from "./Secure";
