@@ -34,7 +34,7 @@ function LoginPage() {
   };
 
   return (
-    <div className='h-screen flex items-center w-screen justify-center p-20 sm:w-full sm:p-10'>
+    <div className='h-screen flex items-center w-screen justify-center p-1 sm:w-full sm:p-20'>
       <form onSubmit={handleLogin} className="w-screen max-w-lg p-12 bg-transparent border-2 
       border-amber-50 rounded-lg shadow-md glowing-border sm:w-full">
         <Input

@@ -26,7 +26,7 @@ function SignupPage() {
     };
 
     return (
-        <div className='h-screen flex items-center justify-center p-20 sm:p-10'>
+        <div className='h-screen flex items-center justify-center p-1 sm:p-20'>
             <form onSubmit={handleSignup} className="w-full max-w-lg p-12 bg-transparent border-2 border-amber-50 rounded-lg shadow-md glowing-border sm:w-full">
                 <Input
                     label="Your email"
