@@ -34,8 +34,9 @@ function LoginPage() {
   };
 
   return (
-    <div className='h-screen flex items-center justify-center p-20 sm:w-screen sm:p-10'>
-      <form onSubmit={handleLogin} className="w-full max-w-lg p-12 bg-transparent border-2 border-amber-50 rounded-lg shadow-md glowing-border sm:w-screen">
+    <div className='h-screen flex items-center w-screen justify-center p-20 sm:w-full sm:p-10'>
+      <form onSubmit={handleLogin} className="w-screen max-w-lg p-12 bg-transparent border-2 
+      border-amber-50 rounded-lg shadow-md glowing-border sm:w-full">
         <Input
           label="Your email"
           type="email"
@@ -56,7 +57,7 @@ function LoginPage() {
           placeholder="Enter Your Password"
           className="mb-4"
         />
-        <Button type="submit" text="Submit" />
+        <Button type="submit" text="Submit" className="w-full" />
       </form>
     </div>
   );

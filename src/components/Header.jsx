@@ -67,7 +67,7 @@ function Header() {
       dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 sm:w-full sm:mb-2"
       onClick={handleSignUp}
     >
-      Sign Up
+      SignUp
     </button>
   }
   {isLogin &&
