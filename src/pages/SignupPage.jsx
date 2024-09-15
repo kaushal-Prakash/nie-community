@@ -45,7 +45,7 @@ function SignupPage() {
                     name="password"
                     onChange={(e) => setPass(e.target.value)}
                     id="password"
-                    placeholder="Enter Your Password"
+                    placeholder="Password (atleast 8 characters)"
                     className="mb-4"
                 />
                 <Button type="submit" text="Submit" />
