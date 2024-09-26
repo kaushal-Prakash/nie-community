@@ -100,7 +100,6 @@ function AllPosts() {
               </h1>
             )}
           </div>
-          <ToTopBtn />
         </div>
       </Secure>
     </div>
