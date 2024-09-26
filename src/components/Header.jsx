@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
@@ -9,6 +9,7 @@ function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
     const dispatch = useDispatch();
+    const navRef = useRef();
     const isLogin = useSelector((state) => state.auth.status); // Ensure this path is correct
     const navigate = useNavigate();
 
@@ -30,6 +31,19 @@ function Header() {
         }
     };
 
+    const handleClickOutside = (event) => {
+        if (navRef.current && !navRef.current.contains(event.target)) {
+            setMenuOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     const handleSignUp = () => {
         navigate('/signup');
     }
@@ -39,7 +53,7 @@ function Header() {
     };
 
     return (
-        <nav className="bg-white dark:bg-neutral-900/50 backdrop-blur-md fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <nav ref={navRef} className="bg-white dark:bg-neutral-900/50 backdrop-blur-md fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
             <div className="max-w-screen-xl cursor-pointer flex flex-wrap items-center justify-between mx-auto p-4">
                 <div className="flex items-center space-x-3 rtl:space-x-reverse" onClick={handleClick}>
                     <img src={Logo} className="sm:h-8 h-4" alt="Flowbite Logo" />

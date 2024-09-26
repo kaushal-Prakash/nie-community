@@ -17,7 +17,7 @@ function MyPosts() {
         if (userData) {
           const userId = userData.$id;
           const response = await dbService.getUserPosts(userId, { limit: 30 });
-          const documents = response.documents || []; // Provide a fallback value
+          const documents = response.documents || [];
           setPosts(documents);
           setLoading(false);
         }
@@ -35,8 +35,14 @@ function MyPosts() {
       if (userData) {
         const userId = userData.$id;
         const response = await dbService.getUserPosts(userId, { limit: 30, offset: posts.length });
-        const documents = response.documents || []; // Provide a fallback value
-        setPosts((prevPosts) => [...prevPosts, ...documents]);
+        const documents = response.documents || [];
+        setPosts((prevPosts) => {
+          const newPosts = [...prevPosts, ...documents];
+          // Remove duplicates
+          const uniquePosts = Array.from(new Set(newPosts.map(post => post.$id)))
+            .map(id => newPosts.find(post => post.$id === id));
+          return uniquePosts;
+        });
         if (documents.length === 0) {
           setHasMore(false);
         }
