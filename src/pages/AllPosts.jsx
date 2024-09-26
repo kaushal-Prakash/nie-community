@@ -14,7 +14,7 @@ function AllPosts() {
     const fetchPosts = async () => {
       try {
         const response = await dbService.getPosts({ limit: 30 });
-        const documents = response.documents || []; // Provide a fallback value
+        const documents = response.documents || [];
         setPosts(documents);
         setLoading(false);
       } catch (error) {
@@ -29,8 +29,14 @@ function AllPosts() {
   const fetchMorePosts = async () => {
     try {
       const response = await dbService.getPosts({ limit: 30, offset: posts.length });
-      const documents = response.documents || []; // Provide a fallback value
-      setPosts((prevPosts) => [...prevPosts, ...documents]);
+      const documents = response.documents || [];
+      setPosts((prevPosts) => {
+        const newPosts = [...prevPosts, ...documents];
+        // Remove duplicates
+        const uniquePosts = Array.from(new Set(newPosts.map(post => post.$id)))
+          .map(id => newPosts.find(post => post.$id === id));
+        return uniquePosts;
+      });
       if (documents.length === 0) {
         setHasMore(false);
       }
